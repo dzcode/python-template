@@ -1,0 +1,11 @@
+rules:
+- id: sample-check
+  languages:
+    - python
+  message: Some suggestion for better code
+  pattern-either:
+    - pattern-regex: "^from xyz"
+  paths:
+    exclude:
+      - "tests/"
+  severity: ERROR

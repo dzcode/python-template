@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+poetry config virtualenvs.prefer-active-python true --local
+poetry config virtualenvs.in-project false --local
+
+if command -v penv &> /dev/null
+then
+  # See: https://github.com/python-poetry/poetry/issues/651#issuecomment-1073213937
+  poetry env use $(pyenv which python)
+fi
+
+# Create a .venv symlink so IDEs pick up the virtualenv
+# Doing it this way instead of using a real local .venv has two main benefits:
+# 1) Easier switching between python versions (multiple virtualenvs can be cached
+# and switched between, instead of blown away each time the python env changes)
+# 2) Better compability with pre-commit
+
+rm -rf .venv
+ln -s $(poetry env info -p) .venv
+
+poetry install $@

@@ -1,0 +1,22 @@
+name-template: 'Upcoming Changes 🚀'
+categories:
+  - title: 'Features'
+    labels:
+      - 'feature'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+  - title: '🚧 Behind the Scenes'
+    labels:
+      - 'behind-the-scenes'
+  - title: '📝 Documentation'
+    labels:
+      - 'documentation'
+  - title: '📌 Dependencies'
+    labels:
+      - 'dependencies'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&#@'
+template: |
+  ## Changes
+  $CHANGES

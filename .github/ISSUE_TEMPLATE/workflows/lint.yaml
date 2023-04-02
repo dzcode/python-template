@@ -1,0 +1,45 @@
+name: Workflows
+on:
+  pull_request:
+  push:
+    branches: ['main']
+
+  release:
+    types: ['published']
+
+
+jobs:
+  lint:
+    name: Lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Python deps
+        uses: thymecare/actions/install-python-deps@main
+        with:
+          install-args: --no-root --with legacy-comms-server,legacy-comms-sidecar
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Lint
+        run: SKIP=helm-syntax pre-commit run --all-files
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test
+    runs-on: in-staging-cluster
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install deps
+        run: bin/install
+
+      - name: Run tests and coverage report
+        run: docker-compose run thymebox-tests

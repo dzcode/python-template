@@ -1,0 +1,60 @@
+name: Workflows
+on:
+  pull_request:
+  push:
+    branches: ['main']
+
+  release:
+    types: ['published']
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.4.2
+
+      - name: Install deps
+        run: bin/install
+
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Lint
+        run: pre-commit run --all-files
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.4.2
+
+      - name: Install deps
+        run: bin/install
+
+      - name: Run tests 
+        run: bin/test

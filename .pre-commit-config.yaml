@@ -1,0 +1,72 @@
+minimum_pre_commit_version: 2.12.0
+repos:
+  - repo: local
+    hooks:
+      - id: autoflake
+        name: autoflake
+        entry: poetry run autoflake --in-place --remove-all-unused-imports
+        types: [python]
+        language: system
+
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        entry: poetry run black
+        types: [python]
+        language: system
+
+  - repo: local
+    hooks:
+      - id: isort
+        name: isort
+        entry: poetry run isort
+        types: [python]
+        language: system
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: >
+            poetry run mypy
+            --scripts-are-modules
+            --namespace-packages
+        language: system
+        'types_or': [python, pyi]
+        # require_serial is required to work with pre-commit
+        # See: https://stackoverflow.com/a/73489329/19961264
+        require_serial: true
+
+  - repo: local
+    hooks:
+      - id: flake8
+        name: flake8
+        entry: poetry run flake8
+        types: [python]
+        language: system
+
+  - repo: local
+    hooks:
+      - id: bandit
+        name: bandit
+        entry: >
+            poetry run bandit
+            --config pyproject.toml
+            --exclude */tests/*,tests/*
+            --quiet
+        types: [python]
+        language: system
+
+  - repo: local
+    hooks:
+      - id: semgrep
+        name: semgrep
+        entry: >
+            poetry run semgrep
+            --config semgrep.yaml
+            --error
+            --quiet
+        types: [python]
+        language: system
+
