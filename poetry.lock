@@ -1176,18 +1176,23 @@ testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.
 
 [[package]]
 name = "pytest-check"
-version = "1.3.0"
+version = "2.9.1"
 description = "A pytest plugin that allows multiple failures per test."
 category = "dev"
 optional = false
-python-versions = ">3.7"
+python-versions = ">=3.9"
 files = [
-    {file = "pytest-check-1.3.0.tar.gz", hash = "sha256:a387968d62525738cd9f36a528013316d7d915cf0ccf5be146a38e7fffa0bba9"},
-    {file = "pytest_check-1.3.0-py3-none-any.whl", hash = "sha256:87b9aa6dde0fff7968f7d703591c18f80d110c852affecf4d5be9fa75d9b1ef2"},
+    {file = "pytest_check-2.9.1-py3-none-any.whl", hash = "sha256:9c745f50532c2f650f3d0afab78810aa9e0ca25b8ac60986e1590d8819c04562"},
+    {file = "pytest_check-2.9.1.tar.gz", hash = "sha256:2d8c9f1fe5cceb0b41c480e1454e95e9ed6a3a534bf2c7e3e0f39167b11cf88b"},
 ]
 
 [package.dependencies]
-pytest = "*"
+packaging = "*"
+pytest = ">=7.0.0"
+typing-extensions = {version = ">=4.12.2,<5", markers = "python_version < \"3.11\""}
+
+[package.extras]
+dev = ["build", "tox", "tox-uv"]
 
 [[package]]
 name = "python-lsp-jsonrpc"
@@ -1332,7 +1337,8 @@ files = [
     {file = "ruamel.yaml.clib-0.2.7-cp310-cp310-win32.whl", hash = "sha256:763d65baa3b952479c4e972669f679fe490eee058d5aa85da483ebae2009d231"},
     {file = "ruamel.yaml.clib-0.2.7-cp310-cp310-win_amd64.whl", hash = "sha256:d000f258cf42fec2b1bbf2863c61d7b8918d31ffee905da62dede869254d3b8a"},
     {file = "ruamel.yaml.clib-0.2.7-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:045e0626baf1c52e5527bd5db361bc83180faaba2ff586e763d3d5982a876a9e"},
-    {file = "ruamel.yaml.clib-0.2.7-cp311-cp311-macosx_12_6_arm64.whl", hash = "sha256:721bc4ba4525f53f6a611ec0967bdcee61b31df5a56801281027a3a6d1c2daf5"},
+    {file = "ruamel.yaml.clib-0.2.7-cp311-cp311-macosx_13_0_arm64.whl", hash = "sha256:1a6391a7cabb7641c32517539ca42cf84b87b667bad38b78d4d42dd23e957c81"},
+    {file = "ruamel.yaml.clib-0.2.7-cp311-cp311-manylinux2014_aarch64.whl", hash = "sha256:9c7617df90c1365638916b98cdd9be833d31d337dbcd722485597b43c4a215bf"},
     {file = "ruamel.yaml.clib-0.2.7-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl", hash = "sha256:41d0f1fa4c6830176eef5b276af04c89320ea616655d01327d5ce65e50575c94"},
     {file = "ruamel.yaml.clib-0.2.7-cp311-cp311-win32.whl", hash = "sha256:f6d3d39611ac2e4f62c3128a9eed45f19a6608670c5a2f4f07f24e8de3441d38"},
     {file = "ruamel.yaml.clib-0.2.7-cp311-cp311-win_amd64.whl", hash = "sha256:da538167284de58a52109a9b89b8f6a53ff8437dd6dc26d33b57bf6699153122"},
@@ -1488,14 +1494,14 @@ files = [
 
 [[package]]
 name = "typing-extensions"
-version = "4.5.0"
-description = "Backported and Experimental Type Hints for Python 3.7+"
+version = "4.16.0"
+description = "Backported and Experimental Type Hints for Python 3.9+"
 category = "dev"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.9"
 files = [
-    {file = "typing_extensions-4.5.0-py3-none-any.whl", hash = "sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"},
-    {file = "typing_extensions-4.5.0.tar.gz", hash = "sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb"},
+    {file = "typing_extensions-4.16.0-py3-none-any.whl", hash = "sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"},
+    {file = "typing_extensions-4.16.0.tar.gz", hash = "sha256:dc983d19a509c94dba722ee6abd33940f7c05a89e243c47e907eb4db6f1a43e5"},
 ]
 
 [[package]]
@@ -1714,4 +1720,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "94e4ef701f9f38a9e8f55ffc4672146c1ced909f76c9c2c91cb01a9b775cf46c"
+content-hash = "74e2987673fb62961d43e72a8427bed687af3dd65352d2af6bb2337ecc00b594"
