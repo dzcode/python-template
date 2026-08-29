@@ -12,7 +12,7 @@ structlog = "^22.3.0"
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^2.20.0"
 mypy = "^0.991"
-coverage = "^6.5.0"
+coverage = "^7.0.0"
 pytest = "^7.2.0"
 bandit = {extras = ["toml"], version = "^1.7.4"}
 black = "^22.12.0"
